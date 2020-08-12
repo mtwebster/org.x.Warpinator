@@ -1,0 +1,37 @@
+app-id: org.x.Warpinator
+runtime: org.gnome.Platform
+runtime-version: '3.36'
+sdk: org.gnome.Sdk
+command: warpinator
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=session-bus
+  - --share=network
+  - --filesystem=host:create
+modules:
+  - name: warpinator
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/mtwebster/warp.git
+        branch: flatpak
+    modules:
+      - python_modules/python3-module_requires.json
+      - name: python-xapp
+        buildsystem: simple
+        build-commands:
+          - python3 setup.py build
+          - python3 setup.py install --prefix=/app
+        sources:
+          - type: git
+            url: https://github.com/linuxmint/python3-xapp.git
+      - name: xapps
+        buildsystem: meson
+        config-opts:
+          - -Dapp-lib-only=true
+          - -Dpy-overrides-dir=/app/lib/python3.7/site-packages/gi/overrides
+        sources:
+          - type: git
+            url: https://github.com/mtwebster/xapp.git
+            branch: flatpak
