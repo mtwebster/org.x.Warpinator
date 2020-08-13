@@ -31,10 +31,6 @@
             "sources": [
                 {
                     "type": "file",
-                    "path": "wheel-0.34.2-py2.py3-none-any.whl"
-                },
-                {
-                    "type": "file",
                     "url": "https://files.pythonhosted.org/packages/5f/8b/533bafcdd7f68f4a21f0371ba1f1d3a3c6de28c1a22bf58b75bea1de8ef4/protobuf-3.12.4.tar.gz",
                     "sha256": "c99e5aea75b6f2b29c8d8da5bdc5f5ed8d9a5b4f15115c8316a3f0a850f94656"
                 },
@@ -42,6 +38,21 @@
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/ee/ff/48bde5c0f013094d729fe4b0316ba2a24774b3ff1c52d924a8a4cb04078a/six-1.15.0-py2.py3-none-any.whl",
                     "sha256": "8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "wheel",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "pip3 install --prefix=${FLATPAK_DEST} wheel-0.34.2-py2.py3-none-any.whl"
+                    ],
+                    "sources": [
+                        {
+                            "type": "file",
+                            "path": "wheel-0.34.2-py2.py3-none-any.whl"
+                        }
+                    ]
                 }
             ]
         },
@@ -163,6 +174,30 @@
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/0d/18/fd6e9c71a35b67a73160ec80a49da63d1eed2d2055054cc2995714949132/netifaces-0.10.9.tar.gz",
                     "sha256": "2dee9ffdd16292878336a58d04a20f0ffe95555465fee7c9bd23b3490ef2abf3"
+                }
+            ]
+        },
+        {
+            "name": "python3-packaging",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"packaging\""
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/46/19/c5ab91b1b05cfe63cccd5cfc971db9214c6dd6ced54e33c30d5af1d2bc43/packaging-20.4-py2.py3-none-any.whl",
+                    "sha256": "998416ba6962ae7fbd6596850b80e17859a5753ba17c32284f67bfff33784181"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/ee/ff/48bde5c0f013094d729fe4b0316ba2a24774b3ff1c52d924a8a4cb04078a/six-1.15.0-py2.py3-none-any.whl",
+                    "sha256": "8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl",
+                    "sha256": "ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
                 }
             ]
         }

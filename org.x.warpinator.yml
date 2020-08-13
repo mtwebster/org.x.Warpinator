@@ -6,18 +6,25 @@ command: warpinator
 finish-args:
   - --share=ipc
   - --socket=x11
-  - --socket=session-bus
   - --share=network
-  - --filesystem=host:create
+  - --filesystem=home
+  - --talk-name=org.freedesktop.FileManager1
 modules:
   - name: warpinator
     buildsystem: meson
+    config-opts:
+      - -Ddesktop-id=org.x.Warpinator
+      - -Dinclude-firewall-mod=false
     sources:
       - type: git
         url: https://github.com/mtwebster/warp.git
-        branch: flatpak
+        branch: flatpak-build
+        # tag: version tag...
     modules:
-      - python_modules/python3-module_requires.json
+      # See module_requires.txt
+      - python_modules/python3-modules.json
+
+      # Preference widgets
       - name: python-xapp
         buildsystem: simple
         build-commands:
@@ -26,6 +33,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/linuxmint/python3-xapp.git
+
+      # Progress reporting, status icon
       - name: xapps
         buildsystem: meson
         config-opts:
@@ -35,3 +44,4 @@ modules:
           - type: git
             url: https://github.com/mtwebster/xapp.git
             branch: flatpak
+            # tag: version tag...
