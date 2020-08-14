@@ -45,3 +45,11 @@ modules:
             url: https://github.com/mtwebster/xapp.git
             branch: flatpak
             # tag: version tag...
+cleanup:
+  - /bin/wheel
+  - /include
+  - /lib/debug/source
+  - /lib/pkgconfig
+  - /share/gir-1.0
+  - /share/vala
+
