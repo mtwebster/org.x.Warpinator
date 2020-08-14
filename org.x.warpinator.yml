@@ -17,8 +17,8 @@ modules:
       - -Dinclude-firewall-mod=false
     sources:
       - type: git
-        url: https://github.com/mtwebster/warp.git
-        branch: flatpak-build
+        url: https://github.com/linuxmint/warpinator.git
+        branch: master
         # tag: version tag...
     modules:
       # See module_requires.txt
@@ -33,6 +33,7 @@ modules:
         sources:
           - type: git
             url: https://github.com/linuxmint/python3-xapp.git
+            tag: 2.0.1
 
       # Progress reporting, status icon
       - name: xapps
@@ -42,8 +43,8 @@ modules:
           - -Dpy-overrides-dir=/app/lib/python3.7/site-packages/gi/overrides
         sources:
           - type: git
-            url: https://github.com/mtwebster/xapp.git
-            branch: flatpak
+            url: https://github.com/linuxmint/xapp.git
+            branch: master
             # tag: version tag...
 cleanup:
   - /bin/wheel
@@ -52,4 +53,5 @@ cleanup:
   - /lib/pkgconfig
   - /share/gir-1.0
   - /share/vala
+  - /share/icons/hicolor/icon-theme.cache
 
